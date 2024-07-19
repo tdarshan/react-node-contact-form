@@ -17,7 +17,7 @@ function resolveMxRecords(domain) {
 function verifyEmailOnServer(mxRecords, email) {
     return new Promise((resolve, reject) => {
         const { exchange } = mxRecords[0];
-        const socket = net.createConnection(25, exchange);
+        const socket = net.createConnection(process.env.MAIL_PORT, exchange);
 
         socket.on('data', (data) => {
             if (data.toString().includes('220')) {

@@ -34,11 +34,11 @@ app.post('/validate-email', async (req, res) => {
     try {
         const { name, email, number } = req.body;
     
-        const isVerified = await verifyEmail(email);
+        // const isVerified = await verifyEmail(email);
     
-        if(!isVerified) {
-            throw new ApiError(400, "Email Not Exists");
-        }
+        // if(!isVerified) {
+        //     throw new ApiError(400, "Email Not Exists");
+        // }
     
         let isEmailSent = await sendEmail(email);
     
@@ -46,7 +46,7 @@ app.post('/validate-email', async (req, res) => {
             throw new ApiError(500, "Email Not Sent");
         }
 
-        res.json({status: 200, isVerified, isEmailSent, message: "Email Sent"});
+        res.json({status: 200, isEmailSent, message: "Email Sent"});
 
     } catch (error) {
         console.log(error.message);
