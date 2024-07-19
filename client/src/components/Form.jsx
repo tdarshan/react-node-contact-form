@@ -5,6 +5,8 @@ import { useState } from "react"
 
 
 const Form = () => {
+
+    const host = window.location.origin;
     
 
     const [formValues, setFormValues] = useState({
@@ -33,7 +35,7 @@ const Form = () => {
 
 
 
-        const isSubmit = await axios.post(`http://localhost:8080/validate-email`, {...formValues});
+        const isSubmit = await axios.post(`${host}/validate-email`, {...formValues});
 
         setShowSubimtMessage(true);
         setFormValues((prev) => ({
