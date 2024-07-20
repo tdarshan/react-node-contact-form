@@ -14,7 +14,6 @@ dotenv.config();
 import { verifyEmail } from "./helpers/validateEmail.js";
 import { sendEmail } from "./helpers/sendEmail.js";
 import { ApiError } from "./helpers/ApiError.js";
-import { sendOtp } from './helpers/sendOTP.js';
 
 
 
@@ -45,11 +44,6 @@ app.post('/validate-email', async (req, res) => {
     
         // if(!isEmailSent) {
         //     throw new ApiError(500, "Email Not Sent");
-        // }
-
-        // let isOtp = await sendOtp(number);
-        // if(!isOtp) {
-        //     throw new ApiError(500, "OTP Not Sent");
         // }
 
         res.json({status: 200, isEmailSent, message: "Email Sent"});
