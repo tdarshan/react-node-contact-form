@@ -40,11 +40,11 @@ app.post('/validate-email', async (req, res) => {
         //     throw new ApiError(400, "Email Not Exists");
         // }
     
-        // let isEmailSent = await sendEmail(email);
+        let isEmailSent = await sendEmail(email);
     
-        // if(!isEmailSent) {
-        //     throw new ApiError(500, "Email Not Sent");
-        // }
+        if(!isEmailSent) {
+            throw new ApiError(500, "Email Not Sent");
+        }
 
         res.json({status: 200, isEmailSent, message: "Email Sent"});
 
